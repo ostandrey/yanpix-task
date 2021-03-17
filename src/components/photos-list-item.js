@@ -4,10 +4,11 @@ const PhotosListItem = ({photo, removePhoto}) => {
     return(
         <li className="list-group-item">
             <div className="d-flex">
-                <img src={photo.user.profile_image.small} className="rounded-circle img-fluid" alt="..."/>
+                <img src={photo.user.profile_image.small}
+                     alt="User profile image"
+                     className="rounded-circle img-fluid" />
                 <div className="d-flex flex-column">
                     <h6>{photo.user.first_name}</h6>
-                    <p>rwerwerwer</p>
                 </div>
             </div>
             <img src="" className="img-fluid" alt="..."/>
@@ -16,7 +17,7 @@ const PhotosListItem = ({photo, removePhoto}) => {
                         className="btn btn-outline-primary me-2"
                         data-bs-toggle="modal"
                         data-bs-target="#exampleModal">
-                    Primary
+                    Info
                 </button>
                 <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
@@ -41,7 +42,7 @@ const PhotosListItem = ({photo, removePhoto}) => {
                     className="btn btn-outline-danger"
                     onClick={() => removePhoto()}
                 >
-                    Danger
+                    Delete
                 </button>
             </div>
         </li>

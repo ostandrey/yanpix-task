@@ -1,17 +1,20 @@
 import React, {useEffect} from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {getPhotos, removePhoto} from "../actions/photos.action";
 import PhotosListItem from "./photos-list-item";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 const PhotosList = () => {
+
     const dispatch = useDispatch();
-    const { photos, isLoading, error } = useSelector((state) => state);
+    const { photos, isLoading } = useSelector((state) => state);
     useEffect(() => {
         dispatch(getPhotos());
-    }, [dispatch]);
+    }, []);
+
     return(
         <>{
-            isLoading
+            isLoading && photos.length === 0
             ?
                 <div className="d-flex justify-content-center">
                     <div className="spinner-border text-light" style={{width: "3rem", height: "3rem"}} role="status">
@@ -21,26 +24,25 @@ const PhotosList = () => {
             :
                 <div>
                     <ul className="list-group">
-                        {
-                            photos.map( photo =>
-                            <PhotosListItem
-                                photo={photo}
-                                removePhoto={() => dispatch(removePhoto(photo.id))}
-                            />)
-                        }
+                        <InfiniteScroll
+                            dataLength={photos.length}
+                            next={() => { dispatch(getPhotos(5)); }}
+                            hasMore={true}
+                            loader={<p>Loading...</p>}
+                        >
+                            {
+                                photos.map( photo =>
+                                    <PhotosListItem
+                                        key={photo.id}
+                                        photo={photo}
+                                        removePhoto={() => dispatch(removePhoto(photo.id))}
+                                    />)
+                            }
+                        </InfiniteScroll>
                     </ul>
                 </div>
         }</>
     )
 };
 
-// const mapStateToProps = state => ({
-//     authors: state.authors
-// });
-//
-// const mapDispathToProps =  dispatch => ({
-//     getAuthors: () => dispatch(getAuthors()),
-// });
-
-// export default connect(mapStateToProps, mapDispathToProps)(PhotosList)
 export default PhotosList

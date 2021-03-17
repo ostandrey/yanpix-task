@@ -12,14 +12,14 @@ const photosReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: true,
-                photos: [],
+                photos: [...state.photos],
                 error: null
             };
         case PhotosActions.PHOTOS_REQUEST_SUCCESS:
             return {
                 ...state,
                 isLoading: false,
-                photos: action.payload,
+                photos: [...state.photos, ...action.payload],
                 error: null
             };
         case PhotosActions.PHOTOS_REQUEST_ERROR:
@@ -29,7 +29,10 @@ const photosReducer = (state = initialState, action) => {
                 error: action.payload
             };
         case PhotosActions.PHOTOS_DELETE:
-            return state.filter(photo => photo.id !== action.payload);
+            return {
+                ...state,
+                photos: state.photos.filter(photo => photo.id !== action.payload)
+            };
         default:
             return state
     }
