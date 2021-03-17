@@ -1,10 +1,10 @@
 import React from 'react'
 
-const PhotosListItem = ({photo}) => {
+const PhotosListItem = ({photo, removePhoto}) => {
     return(
         <li className="list-group-item">
             <div className="d-flex">
-                <img src="" className="rounded-circle img-fluid" alt="..."/>
+                <img src={photo.user.profile_image.small} className="rounded-circle img-fluid" alt="..."/>
                 <div className="d-flex flex-column">
                     <h6>{photo.user.first_name}</h6>
                     <p>rwerwerwer</p>
@@ -36,7 +36,13 @@ const PhotosListItem = ({photo}) => {
                         </div>
                     </div>
                 </div>
-                <button type="button" className="btn btn-outline-danger">Danger</button>
+                <button
+                    type="button"
+                    className="btn btn-outline-danger"
+                    onClick={() => removePhoto()}
+                >
+                    Danger
+                </button>
             </div>
         </li>
     )

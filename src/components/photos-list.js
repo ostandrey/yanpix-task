@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
-import {getPhotos} from "../actions/photos.action";
+import {getPhotos, removePhoto} from "../actions/photos.action";
 import PhotosListItem from "./photos-list-item";
 
 const PhotosList = () => {
@@ -25,6 +25,7 @@ const PhotosList = () => {
                             photos.map( photo =>
                             <PhotosListItem
                                 photo={photo}
+                                removePhoto={() => dispatch(removePhoto(photo.id))}
                             />)
                         }
                     </ul>

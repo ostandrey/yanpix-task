@@ -25,4 +25,10 @@ const getPhotosError = (error) => ({
     payload: error
 });
 
+export const removePhoto = (id) => ({
+    type: PhotosActions.PHOTOS_DELETE,
+    payload: id
+});
+
+
 export default getPhotos()

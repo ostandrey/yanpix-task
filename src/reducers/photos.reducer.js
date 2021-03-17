@@ -28,6 +28,8 @@ const photosReducer = (state = initialState, action) => {
                 photos: [],
                 error: action.payload
             };
+        case PhotosActions.PHOTOS_DELETE:
+            return state.filter(photo => photo.id !== action.payload);
         default:
             return state
     }
