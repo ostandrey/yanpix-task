@@ -1,35 +1,45 @@
-import React from 'react'
+import React, {useEffect} from 'react';
+import { connect, useDispatch, useSelector } from 'react-redux';
+import {getAuthors} from "../actions/authors.action";
+import AuthorsListItem from "./authors-list-item";
 
 const AuthorsList = () => {
+    const dispatch = useDispatch();
+    const { authors, isLoading, error } = useSelector((state) => state);
+    useEffect(() => {
+        dispatch(getAuthors());
+    }, [dispatch]);
     return(
-        <div>
-            <ul className="list-group">
-                <li className="list-group-item">
-                    <div className="d-flex">
-                        <img src="" className="rounded-circle img-fluid" alt="..."/>
-                        <div className="d-flex flex-column">
-                            <h6>Name Surname</h6>
-                            <p>rwerwerwer</p>
-                        </div>
+        <>{
+            isLoading
+            ?
+                <div className="d-flex justify-content-center">
+                    <div className="spinner-border text-light" style={{width: "3rem", height: "3rem"}} role="status">
+                        <span className="sr-only">Loading...</span>
                     </div>
-                    <img src="..." className="img-fluid" alt="..."/>
-                    <div className="d-flex justify-content-end">
-                        <button type="button"
-                                className="btn btn-outline-primary me-2"
-                                data-bs-toggle="modal"
-                                data-bs-target="#exampleModal">
-                            Primary
-                        </button>
-                        <button type="button" className="btn btn-outline-danger">Danger</button>
-                    </div>
-                </li>
-                <li className="list-group-item">A second item</li>
-                <li className="list-group-item">A third item</li>
-                <li className="list-group-item">A fourth item</li>
-                <li className="list-group-item">And a fifth one</li>
-            </ul>
-        </div>
+                </div>
+            :
+                <div>
+                    <ul className="list-group">
+                        {
+                            authors.map( author =>
+                            <AuthorsListItem
+                                author={author}
+                            />)
+                        }
+                    </ul>
+                </div>
+        }</>
     )
 };
 
+// const mapStateToProps = state => ({
+//     authors: state.authors
+// });
+//
+// const mapDispathToProps =  dispatch => ({
+//     getAuthors: () => dispatch(getAuthors()),
+// });
+
+// export default connect(mapStateToProps, mapDispathToProps)(AuthorsList)
 export default AuthorsList
