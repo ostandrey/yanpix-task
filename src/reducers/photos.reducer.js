@@ -1,31 +1,31 @@
-import { AuthorsActions } from "../constants/authors.constants";
+import { PhotosActions } from "../constants/photos.constants";
 
 const initialState = {
     isLoading: false,
-    authors: [],
+    photos: [],
     error: null
 };
 
-const authorsReducer = (state = initialState, action) => {
+const photosReducer = (state = initialState, action) => {
     switch (action.type) {
-        case AuthorsActions.AUTHORS_REQUEST:
+        case PhotosActions.PHOTOS_REQUEST:
             return {
                 ...state,
                 isLoading: true,
-                authors: [],
+                photos: [],
                 error: null
             };
-        case AuthorsActions.AUTHORS_REQUEST_SUCCESS:
+        case PhotosActions.PHOTOS_REQUEST_SUCCESS:
             return {
                 ...state,
                 isLoading: false,
-                authors: action.payload,
+                photos: action.payload,
                 error: null
             };
-        case AuthorsActions.AUTHORS_REQUEST_ERROR:
+        case PhotosActions.PHOTOS_REQUEST_ERROR:
             return {
                 isLoading: false,
-                authors: [],
+                photos: [],
                 error: action.payload
             };
         default:
@@ -33,4 +33,4 @@ const authorsReducer = (state = initialState, action) => {
     }
 };
 
-export default authorsReducer
+export default photosReducer

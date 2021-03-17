@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
-import {getAuthors} from "../actions/authors.action";
-import AuthorsListItem from "./authors-list-item";
+import {getPhotos} from "../actions/photos.action";
+import PhotosListItem from "./photos-list-item";
 
-const AuthorsList = () => {
+const PhotosList = () => {
     const dispatch = useDispatch();
-    const { authors, isLoading, error } = useSelector((state) => state);
+    const { photos, isLoading, error } = useSelector((state) => state);
     useEffect(() => {
-        dispatch(getAuthors());
+        dispatch(getPhotos());
     }, [dispatch]);
     return(
         <>{
@@ -22,9 +22,9 @@ const AuthorsList = () => {
                 <div>
                     <ul className="list-group">
                         {
-                            authors.map( author =>
-                            <AuthorsListItem
-                                author={author}
+                            photos.map( photo =>
+                            <PhotosListItem
+                                photo={photo}
                             />)
                         }
                     </ul>
@@ -41,5 +41,5 @@ const AuthorsList = () => {
 //     getAuthors: () => dispatch(getAuthors()),
 // });
 
-// export default connect(mapStateToProps, mapDispathToProps)(AuthorsList)
-export default AuthorsList
+// export default connect(mapStateToProps, mapDispathToProps)(PhotosList)
+export default PhotosList

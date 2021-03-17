@@ -1,16 +1,16 @@
 import React from 'react'
 
-const AuthorsListItem = ({author}) => {
+const PhotosListItem = ({photo}) => {
     return(
         <li className="list-group-item">
             <div className="d-flex">
                 <img src="" className="rounded-circle img-fluid" alt="..."/>
                 <div className="d-flex flex-column">
-                    <h6>{author.user.first_name}</h6>
+                    <h6>{photo.user.first_name}</h6>
                     <p>rwerwerwer</p>
                 </div>
             </div>
-            <img src="..." className="img-fluid" alt="..."/>
+            <img src="" className="img-fluid" alt="..."/>
             <div className="d-flex justify-content-end">
                 <button type="button"
                         className="btn btn-outline-primary me-2"
@@ -42,4 +42,4 @@ const AuthorsListItem = ({author}) => {
     )
 };
 
-export default AuthorsListItem;
+export default PhotosListItem;

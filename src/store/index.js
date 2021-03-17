@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from "redux";
 import thunk from 'redux-thunk';
-import authorsReducer from "../reducers/authors.reducer";
+import photosReducer from "../reducers/photos.reducer";
 
-export default createStore(authorsReducer, applyMiddleware(thunk));
+export default createStore(photosReducer, applyMiddleware(thunk));
