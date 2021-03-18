@@ -4,6 +4,7 @@ const initialState = {
     isLoading: false,
     photos: [],
     photo: null,
+    page: 1,
     error: null
 };
 
@@ -14,6 +15,7 @@ const photosReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: true,
                 photos: [...state.photos],
+                page: action.payload,
                 error: null
             };
         case PhotosActions.PHOTOS_REQUEST_SUCCESS:

@@ -8,10 +8,10 @@ import PhotoInfo from "./photo-info";
 const PhotosList = () => {
 
     const dispatch = useDispatch();
-    const { photos, isLoading, photo } = useSelector((state) => state);
+    const { photos, isLoading, photo, page } = useSelector((state) => state);
     useEffect(() => {
         dispatch(getPhotos());
-    }, []);
+    }, [dispatch]);
 
     return(
         <>{
@@ -27,7 +27,7 @@ const PhotosList = () => {
                     <ul className="list-group">
                         <InfiniteScroll
                             dataLength={photos.length}
-                            next={() => { dispatch(getPhotos(5)); }}
+                            next={() => { dispatch(getPhotos(page + 1)); }}
                             hasMore={true}
                             loader={<p>Loading...</p>}
                         >

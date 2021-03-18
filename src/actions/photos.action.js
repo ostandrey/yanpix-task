@@ -1,19 +1,20 @@
 import axios from "axios";
-import {PhotosActions} from "../constants/photos.constants";
+import {PhotosActions, apiPath} from "../constants";
+import config from "../config"
 
-export const getPhotos = (count = 10) => {
+
+export const getPhotos = (page = 1) => {
     return(dispatch) => {
-        dispatch(getPhotosStarted());
-
-        axios.get(`https://api.unsplash.com/photos/random?client_id=I-GjKXR7z6Y8HAKyutYLFbKpftAZb5CfQsppNhjlrBk&count=${count}`)
-            //XPAz9fLDCtsJ_4_-BuE-Cy_bnRP_3HcxPt8CWw4Lfkc
+        dispatch(getPhotosStarted(page));
+        axios.get(`${apiPath.PHOTOS}?client_id=${config.ACCESS_KEY}&page=${page}`)
             .then(res => {dispatch(getPhotosSuccess(res.data))})
             .catch(error => {dispatch(getPhotosError(error))})
     }
 };
 
-const getPhotosStarted = () => ({
-    type: PhotosActions.PHOTOS_REQUEST
+const getPhotosStarted = (page) => ({
+    type: PhotosActions.PHOTOS_REQUEST,
+    payload: page
 });
 
 const getPhotosSuccess = (authors) => ({
@@ -35,6 +36,5 @@ export const getPhotoInfo = (photo) => ({
     type: PhotosActions.PHOTO_INFO,
     payload: photo
 });
-
 
 export default getPhotos()
