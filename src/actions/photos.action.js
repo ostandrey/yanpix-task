@@ -31,5 +31,10 @@ export const removePhoto = (id) => ({
     payload: id
 });
 
+export const getPhotoInfo = (photo) => ({
+    type: PhotosActions.PHOTO_INFO,
+    payload: photo
+});
+
 
 export default getPhotos()

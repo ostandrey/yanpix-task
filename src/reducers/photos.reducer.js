@@ -3,6 +3,7 @@ import { PhotosActions } from "../constants/photos.constants";
 const initialState = {
     isLoading: false,
     photos: [],
+    photo: {},
     error: null
 };
 
@@ -32,6 +33,11 @@ const photosReducer = (state = initialState, action) => {
             return {
                 ...state,
                 photos: state.photos.filter(photo => photo.id !== action.payload)
+            };
+        case PhotosActions.PHOTO_INFO:
+            return {
+                ...state,
+                photo: action.payload
             };
         default:
             return state

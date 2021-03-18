@@ -1,13 +1,14 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {getPhotos, removePhoto} from "../actions/photos.action";
+import {getPhotoInfo, getPhotos, removePhoto} from "../actions/photos.action";
 import PhotosListItem from "./photos-list-item";
 import InfiniteScroll from "react-infinite-scroll-component";
+import PhotosInfo from "./photos-info";
 
 const PhotosList = () => {
 
     const dispatch = useDispatch();
-    const { photos, isLoading } = useSelector((state) => state);
+    const { photos, isLoading, photo } = useSelector((state) => state);
     useEffect(() => {
         dispatch(getPhotos());
     }, []);
@@ -36,10 +37,14 @@ const PhotosList = () => {
                                         key={photo.id}
                                         photo={photo}
                                         removePhoto={() => dispatch(removePhoto(photo.id))}
+                                        getPhotoInfo={() => dispatch(getPhotoInfo(photo))}
                                     />)
                             }
                         </InfiniteScroll>
                     </ul>
+                    <PhotosInfo
+                        photo={photo}
+                    />
                 </div>
         }</>
     )
