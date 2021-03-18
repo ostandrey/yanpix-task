@@ -3,7 +3,7 @@ import { PhotosActions } from "../constants/photos.constants";
 const initialState = {
     isLoading: false,
     photos: [],
-    photo: {},
+    photo: null,
     error: null
 };
 

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {getPhotoInfo, getPhotos, removePhoto} from "../actions/photos.action";
 import PhotosListItem from "./photos-list-item";
 import InfiniteScroll from "react-infinite-scroll-component";
-import PhotosInfo from "./photos-info";
+import PhotoInfo from "./photo-info";
 
 const PhotosList = () => {
 
@@ -42,7 +42,7 @@ const PhotosList = () => {
                             }
                         </InfiniteScroll>
                     </ul>
-                    <PhotosInfo
+                    <PhotoInfo
                         photo={photo}
                     />
                 </div>

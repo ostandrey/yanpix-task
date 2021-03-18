@@ -4,8 +4,8 @@ import PhotosList from "./components/photos-list";
 
 function App() {
   return (
-    <div className="container-sm mt-4 shadow-lg p-3 mb-5 bg-body rounded">
-        <h1 className="text-center">Radency employees</h1>
+    <div className="container mt-4 shadow-lg p-3 mb-5 rounded w-90 bg-white content-wrapper">
+        <h1 className="text-center title">Yanpix Photos</h1>
         <PhotosList/>
     </div>
   );
