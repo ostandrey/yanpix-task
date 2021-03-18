@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/yanpix-task/static/css/main.38378c07.chunk.css",
+    "main.js": "/yanpix-task/static/js/main.54175860.chunk.js",
+    "main.js.map": "/yanpix-task/static/js/main.54175860.chunk.js.map",
+    "runtime-main.js": "/yanpix-task/static/js/runtime-main.9b53c65f.js",
+    "runtime-main.js.map": "/yanpix-task/static/js/runtime-main.9b53c65f.js.map",
+    "static/js/2.deb97804.chunk.js": "/yanpix-task/static/js/2.deb97804.chunk.js",
+    "static/js/2.deb97804.chunk.js.map": "/yanpix-task/static/js/2.deb97804.chunk.js.map",
+    "static/js/3.6b7f88c2.chunk.js": "/yanpix-task/static/js/3.6b7f88c2.chunk.js",
+    "static/js/3.6b7f88c2.chunk.js.map": "/yanpix-task/static/js/3.6b7f88c2.chunk.js.map",
+    "index.html": "/yanpix-task/index.html",
+    "static/css/main.38378c07.chunk.css.map": "/yanpix-task/static/css/main.38378c07.chunk.css.map",
+    "static/js/2.deb97804.chunk.js.LICENSE.txt": "/yanpix-task/static/js/2.deb97804.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9b53c65f.js",
+    "static/js/2.deb97804.chunk.js",
+    "static/css/main.38378c07.chunk.css",
+    "static/js/main.54175860.chunk.js"
+  ]
+}
